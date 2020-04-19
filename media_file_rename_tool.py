@@ -8,11 +8,11 @@ def store_extensions():
     no_strings = ['N', 'n', 'No', 'NO', 'no']
     # Ask user to add extension
     print('Type in extension to add to filter:')
-    current_extension = input()
+    current_extension = raw_input()
     # Check empty entry
     while not current_extension:
         print('Put in an extension or use Ctrl+C to abort the program')
-        current_extension = input()
+        current_extension = raw_input()
     # Correct the extension if it doen't start with a dot ('.'')
     if current_extension[0] == '.':
         extensions.append(current_extension)
@@ -20,7 +20,7 @@ def store_extensions():
         extensions.append('.{}'.format(current_extension))
     # Ask for another extensions and return resuls
     print('Sucessfully added. Do you want to add another extension? (Y/N)')
-    if input() in yes_strings:
+    if raw_input() in yes_strings:
         extensions.extend(store_extensions())
     return extensions
 
