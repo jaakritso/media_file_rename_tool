@@ -40,7 +40,7 @@ def rename_files(directory='./', extensions=None):
         file_name, extension = os.path.splitext(file)
         if (extension in extensions):
             # Get the create time of the file and convert into human-readable
-            create_time = os.path.getctime(file)
+            create_time = os.path.getmtime(file)
             format_time = datetime.datetime.fromtimestamp(create_time)
             format_time_string = format_time.strftime("%Y-%m-%d %H.%M.%S")
             # Create the new name for the file
