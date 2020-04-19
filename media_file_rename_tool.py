@@ -1,6 +1,8 @@
 import os
 import datetime
-
+import configparser
+config = configparser.ConfigParser()
+config.read_file(open('config.properties'))
 
 def store_extensions():
     extensions = []
@@ -25,7 +27,7 @@ def store_extensions():
     return extensions
 
 
-def rename_files(directory='./', extensions=None, dateformat='%d.%m.%Y %H.%M.%S'):
+def rename_files(directory='./', extensions=None):
     if not extensions:
         extensions = store_extensions()
     # Create list for file names
@@ -42,6 +44,7 @@ def rename_files(directory='./', extensions=None, dateformat='%d.%m.%Y %H.%M.%S'
             # Get the create time of the file and convert into human-readable
             create_time = os.path.getmtime(file)
             format_time = datetime.datetime.fromtimestamp(create_time)
+            dateformat = config.get('DEFAULT', 'dateformat', raw=True, fallback='%Y-%m-%d %H.%M.%S')
             format_time_string = format_time.strftime(dateformat)
             # Create the new name for the file
             new_name = format_time_string + extension
