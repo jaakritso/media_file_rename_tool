@@ -59,7 +59,7 @@ def rename_files(directory='./', extensions=None):
             count = count + 1
             print(file.rjust(35) + '    =>    ' + new_name.ljust(35))
 
-    print('All done. {} files are renamed.'.format(str(count))
+    print('All done. {} files are renamed.'.format(str(count)))
 
 
 if __name__ == '__main__':
